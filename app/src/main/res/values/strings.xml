@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">lesson_07</string>
+
+    <string name="training_activity_header">Training</string>
+    <string name="training_activity_login_button">Login</string>
+    <string name="training_activity_registration_button">Registration</string>
+    <string name="training_activity_aboutApp_button">About program</string>
+
+    <string name="login_activity_header">Login</string>
+    <string name="login_activity_login_hint">login</string>
+    <string name="login_activity_password_hint">password</string>
+    <string name="login_activity_sign_un">Sign in</string>
+    <string name="login_activity_back_button">Back</string>
+    <string name="login_activity_error_login_empty">Login is empty</string>
+    <string name="login_activity_error_password_empty">Password is empty</string>
+
+    <string name="registration_activity_password_hint">password</string>
+    <string name="registration_activity_password_repeat_hint">repeat password</string>
+    <string name="registration_activity_login_hint">login</string>
+    <string name="registration_activity_user_first_name">name</string>
+    <string name="registration_activity_user_last_name">last name</string>
+    <string name="registration_activity_additional_information">additional information</string>
+    <string name="registration_activity_header">Registration</string>
+    <string name="registration_activity_radio_man">Man</string>
+    <string name="registration_activity_radio_woman">Woman</string>
+    <string name="registration_activity_radio_it">Not defined</string>
+    <string name="registration_activity_checkbox_accept_agreement">I accept the agreement</string>
+    <string name="registration_activity_error_login_short">Short login</string>
+    <string name="registration_activity_error_password_simple">Simple password</string>
+    <string name="registration_activity_error_repeat_password_simple">Password mismatch</string>
+    <string name="registration_activity_error_empty_field">Field can\'t be empty</string>
+
+    <string name="information_activity_header">Information</string>
+</resources>
