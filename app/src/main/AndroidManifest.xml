@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.minchinovich.lesson_07">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,13 +11,13 @@
         android:theme="@style/Theme.Lesson_07">
         <activity
             android:name=".InformationActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".RegistrationActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -30,5 +28,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

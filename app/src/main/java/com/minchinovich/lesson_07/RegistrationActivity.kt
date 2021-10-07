@@ -1,12 +1,12 @@
 package com.minchinovich.lesson_07
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
 import android.widget.RadioButton
+import androidx.appcompat.app.AppCompatActivity
 import com.minchinovich.lesson_07.databinding.ActivityRegistrationBinding
+import com.minchinovich.lesson_07.util.SimpleTextWatcher
 
 private const val MIN_LOGIN_LENGTH = 4
 private const val MIN_PASSWORD_LENGTH = 8
@@ -19,32 +19,19 @@ class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
 
-    override fun onStart() {
-        super.onStart()
-
-        binding.loginEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {return}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {return}
-
+        binding.loginEditText.addTextChangedListener(object : SimpleTextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!checkLogin(s.toString().trim())){
+                if (!checkLogin(s.toString().trim())) {
                     binding.loginEditText.error =
                         getString(R.string.registration_activity_error_login_short)
                 }
             }
-
         })
 
-        binding.passwordEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {return}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {return}
-
+        binding.passwordEditText.addTextChangedListener(object : SimpleTextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!checkPassword(s.toString())){
+                if (!checkPassword(s.toString())) {
                     binding.passwordEditText.error =
                         getString(R.string.registration_activity_error_password_simple)
                 }
@@ -62,27 +49,26 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         binding.verificationButton.setOnClickListener {
-            if (checkAllFields()){
-                val intent = Intent(this, InformationActivity::class.java)
-                intent.putExtra(InformationActivity.KEY_LOGIN, binding.loginEditText.text.toString())
-                intent.putExtra(InformationActivity.KEY_PASSWORD, binding.passwordEditText.text.toString())
-                intent.putExtra(InformationActivity.KEY_FIRST_NAME, binding.firstNameEditText.text.toString())
-                intent.putExtra(InformationActivity.KEY_LAST_NAME, binding.lastNameEditText.text.toString())
+            if (checkAllFields()) {
                 val view = findViewById<RadioButton>(binding.genderRadioGroup.checkedRadioButtonId)
-                intent.putExtra(InformationActivity.KEY_GENDER, view.text.toString())
-                intent.putExtra(InformationActivity.KEY_ADDITIONAL, binding.additionalInformationEditText.text.toString())
-                startActivity(intent)
+                startActivity(Intent(this, InformationActivity::class.java)
+                    .putExtra(InformationActivity.KEY_LOGIN, binding.loginEditText.text.toString())
+                    .putExtra(InformationActivity.KEY_PASSWORD, binding.passwordEditText.text.toString())
+                    .putExtra(InformationActivity.KEY_FIRST_NAME, binding.firstNameEditText.text.toString())
+                    .putExtra(InformationActivity.KEY_LAST_NAME, binding.lastNameEditText.text.toString())
+                    .putExtra(InformationActivity.KEY_GENDER, view.text.toString())
+                    .putExtra(InformationActivity.KEY_ADDITIONAL, binding.additionalInformationEditText.text.toString())
+                )
             }
         }
 
         binding.backButton.setOnClickListener {
             finish()
         }
-
     }
 
-    private fun checkAllFields(): Boolean{
-        when{
+    private fun checkAllFields(): Boolean {
+        when {
             !checkLogin(binding.loginEditText.text.toString().trim()) -> {
                 binding.loginEditText.error =
                     getString(R.string.registration_activity_error_login_short)
@@ -95,9 +81,9 @@ class RegistrationActivity : AppCompatActivity() {
                 binding.passwordEditText.requestFocus()
                 return false
             }
-            binding.passwordRepeatEditText.text.toString() != binding.passwordEditText.text.toString() ->{
+            binding.passwordRepeatEditText.text.toString() != binding.passwordEditText.text.toString() -> {
                 binding.passwordRepeatEditText.error =
-                   getString(R.string.registration_activity_error_repeat_password_simple)
+                    getString(R.string.registration_activity_error_repeat_password_simple)
                 binding.passwordRepeatEditText.requestFocus()
                 return false
             }
@@ -117,11 +103,11 @@ class RegistrationActivity : AppCompatActivity() {
         return true
     }
 
-    private fun checkLogin(text: String): Boolean{
+    private fun checkLogin(text: String): Boolean {
         return text.length >= MIN_LOGIN_LENGTH
     }
 
-    private fun checkPassword(text: String): Boolean{
+    private fun checkPassword(text: String): Boolean {
         return text.length >= MIN_PASSWORD_LENGTH
     }
 

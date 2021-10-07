@@ -8,6 +8,15 @@ import java.lang.StringBuilder
 
 class InformationActivity : AppCompatActivity() {
 
+    companion object{
+        const val KEY_LOGIN = "login"
+        const val KEY_PASSWORD = "password"
+        const val KEY_FIRST_NAME = "first name"
+        const val KEY_LAST_NAME = "last name"
+        const val KEY_GENDER = "gender"
+        const val KEY_ADDITIONAL = "additional"
+    }
+
     private lateinit var binding: ActivityInformationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,13 +24,9 @@ class InformationActivity : AppCompatActivity() {
 
         binding = ActivityInformationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
 
-    override fun onStart() {
-        super.onStart()
-
-        val login = intent.getStringExtra(KEY_LOGIN) ?: DEFAULT_STRING
-        val password = intent.getStringExtra(KEY_PASSWORD) ?: DEFAULT_STRING
+        val login = intent.getStringExtra(KEY_LOGIN) ?: ""
+        val password = intent.getStringExtra(KEY_PASSWORD) ?: ""
         val firstName = intent.getStringExtra(KEY_FIRST_NAME) ?: ""
         val lastName = intent.getStringExtra(KEY_LAST_NAME) ?: ""
         val gender = intent.getStringExtra(KEY_GENDER) ?: ""
@@ -48,15 +53,5 @@ class InformationActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             finish()
         }
-    }
-
-    companion object{
-        private const val DEFAULT_STRING = "anonymous"
-        const val KEY_LOGIN = "login"
-        const val KEY_PASSWORD = "password"
-        const val KEY_FIRST_NAME = "first name"
-        const val KEY_LAST_NAME = "last name"
-        const val KEY_GENDER = "gender"
-        const val KEY_ADDITIONAL = "additional"
     }
 }

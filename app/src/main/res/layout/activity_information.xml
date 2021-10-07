@@ -51,5 +51,4 @@
             android:background="@drawable/button_background"/>
 
     </LinearLayout>
-
 </ScrollView>
