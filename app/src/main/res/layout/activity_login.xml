@@ -1,82 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     tools:context=".LoginActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/layout_container_padding"
-        android:weightSum="1"
-        android:orientation="vertical">
+        android:padding="@dimen/layout_container_padding">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+        <TextView
+            android:id="@+id/login_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_view_margin_bottom"
             android:gravity="center"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:text="@string/login_activity_header"
+            android:textColor="@color/green"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintBottom_toTopOf="@id/login_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginBottom="@dimen/item_view_margin_bottom"
-                android:text="@string/login_activity_header"
-                android:textColor="@color/green"
-                android:textSize="@dimen/header_text_size"/>
+        <EditText
+            android:id="@+id/login_edit_text"
+            style="@style/MyEditText"
+            android:autofillHints="username"
+            android:hint="@string/login_activity_login_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@id/password_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_title" />
 
-            <EditText
-                android:id="@+id/login_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/edit_text_padding"
-                android:layout_marginBottom="@dimen/item_view_margin_bottom"
-                android:background="@drawable/edit_text_background"
-                android:inputType="textPersonName"
-                android:hint="@string/login_activity_login_hint"
-                android:textSize="@dimen/simple_button_text_size"
-                android:autofillHints="username"/>
+        <EditText
+            android:id="@+id/password_edit_text"
+            style="@style/MyEditText"
+            android:autofillHints="password"
+            android:hint="@string/login_activity_password_hint"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@id/verification_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_edit_text" />
 
-            <EditText
-                android:id="@+id/password_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/edit_text_padding"
-                android:layout_marginBottom="@dimen/item_view_margin_bottom"
-                android:background="@drawable/edit_text_background"
-                android:hint="@string/login_activity_password_hint"
-                android:inputType="textPassword"
-                android:textSize="@dimen/simple_button_text_size"
-                android:autofillHints="password"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/verification_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/item_view_margin_bottom"
-                android:textColor="@color/black"
-                android:textSize="@dimen/simple_button_text_size"
-                android:textAllCaps="false"
-                android:text="@string/login_activity_sign_un"
-                android:background="@drawable/button_background"/>
-
-        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/verification_button"
+            style="@style/MyAppButtons"
+            android:text="@string/login_activity_sign_un"
+            app:layout_constraintBottom_toTopOf="@id/back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password_edit_text" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/back_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:textSize="@dimen/simple_button_text_size"
-            android:textAllCaps="false"
+            style="@style/MyAppButtons.LastButton"
             android:text="@string/login_activity_back_button"
-            android:background="@drawable/button_background"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

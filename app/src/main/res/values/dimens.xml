@@ -6,4 +6,10 @@
     <dimen name="simple_button_text_size">24sp</dimen>
     <dimen name="edit_text_size">16sp</dimen>
     <dimen name="edit_text_padding">9dp</dimen>
+    <dimen name="button_press_radius">14dp</dimen>
+    <dimen name="button_press_border">3dp</dimen>
+    <dimen name="button_radius_normal">14dp</dimen>
+    <dimen name="button_border_normal">@dimen/app_borders</dimen>
+    <dimen name="edit_text_border">@dimen/app_borders</dimen>
+    <dimen name="app_borders">1dp</dimen>
 </resources>
