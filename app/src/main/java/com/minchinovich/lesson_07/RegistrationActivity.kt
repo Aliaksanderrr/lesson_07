@@ -51,13 +51,29 @@ class RegistrationActivity : AppCompatActivity() {
         binding.verificationButton.setOnClickListener {
             if (checkAllFields()) {
                 val view = findViewById<RadioButton>(binding.genderRadioGroup.checkedRadioButtonId)
-                startActivity(Intent(this, InformationActivity::class.java)
-                    .putExtra(InformationActivity.KEY_LOGIN, binding.loginEditText.text.toString())
-                    .putExtra(InformationActivity.KEY_PASSWORD, binding.passwordEditText.text.toString())
-                    .putExtra(InformationActivity.KEY_FIRST_NAME, binding.firstNameEditText.text.toString())
-                    .putExtra(InformationActivity.KEY_LAST_NAME, binding.lastNameEditText.text.toString())
-                    .putExtra(InformationActivity.KEY_GENDER, view.text.toString())
-                    .putExtra(InformationActivity.KEY_ADDITIONAL, binding.additionalInformationEditText.text.toString())
+                startActivity(
+                    Intent(this, InformationActivity::class.java)
+                        .putExtra(
+                            InformationActivity.KEY_LOGIN,
+                            binding.loginEditText.text.toString()
+                        )
+                        .putExtra(
+                            InformationActivity.KEY_PASSWORD,
+                            binding.passwordEditText.text.toString()
+                        )
+                        .putExtra(
+                            InformationActivity.KEY_FIRST_NAME,
+                            binding.firstNameEditText.text.toString()
+                        )
+                        .putExtra(
+                            InformationActivity.KEY_LAST_NAME,
+                            binding.lastNameEditText.text.toString()
+                        )
+                        .putExtra(InformationActivity.KEY_GENDER, view.text.toString())
+                        .putExtra(
+                            InformationActivity.KEY_ADDITIONAL,
+                            binding.additionalInformationEditText.text.toString()
+                        )
                 )
             }
         }
@@ -68,6 +84,11 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun checkAllFields(): Boolean {
+        binding.loginEditText.error = null
+        binding.passwordEditText.error = null
+        binding.passwordRepeatEditText.error = null
+        binding.firstNameEditText.error = null
+        binding.lastNameEditText.error = null
         when {
             !checkLogin(binding.loginEditText.text.toString().trim()) -> {
                 binding.loginEditText.error =

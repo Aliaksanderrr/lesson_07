@@ -17,6 +17,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.verificationButton.setOnClickListener {
+            binding.loginEditText.error = null
+            binding.passwordEditText.error = null
             if (checkLogin() && checkPassword()) {
                 startActivity(
                     Intent(this, InformationActivity::class.java)
